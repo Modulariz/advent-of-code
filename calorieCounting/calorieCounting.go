@@ -1,4 +1,4 @@
-package main
+package calorieCounting
 
 import (
 	"fmt"
@@ -48,7 +48,7 @@ type Elf struct {
 	meals  []int
 }
 
-func (elf Elf) getTotalCalories() int {
+func (elf Elf) GetTotalCalories() int {
 	totalCalories := 0
 	for _, mealCalories := range elf.meals {
 		totalCalories += mealCalories
@@ -60,10 +60,10 @@ type ElfCamp struct {
 	elves []Elf
 }
 
-func (camp ElfCamp) getElfWithMostCalories() Elf {
+func (camp ElfCamp) GetElfWithMostCalories() Elf {
 	var result Elf
 	for _, currentElf := range camp.elves {
-		if currentElf.getTotalCalories() > result.getTotalCalories() {
+		if currentElf.GetTotalCalories() > result.GetTotalCalories() {
 			result = currentElf
 		}
 	}
@@ -102,8 +102,8 @@ func main() {
 		})
 	}
 
-	elfWithMostCalories := camp.getElfWithMostCalories()
+	elfWithMostCalories := camp.GetElfWithMostCalories()
 
 	fmt.Println("the elf with the most calories is:", elfWithMostCalories.number)
-	fmt.Printf("he has %d calories in total \n", elfWithMostCalories.getTotalCalories())
+	fmt.Printf("he has %d calories in total \n", elfWithMostCalories.GetTotalCalories())
 }
